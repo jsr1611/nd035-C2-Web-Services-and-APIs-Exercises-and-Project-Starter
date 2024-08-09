@@ -1,16 +1,10 @@
 package com.udacity.vehicles.api;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.udacity.vehicles.client.maps.MapsClient;
@@ -34,7 +28,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -89,6 +82,24 @@ public class CarControllerTest {
                         .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isCreated());
     }
+
+
+    /**
+     * Tests for successful update of an existing car in the system
+     * @throws Exception when car update fails in the system
+     */
+    @Test
+    public void updateCar() throws Exception {
+        Car car = getCar();
+        mvc.perform(
+                        put(new URI("/cars/1"))
+                                .content(json.write(car).getJson())
+                                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                                .accept(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
+    }
+
+
 
     /**
      * Tests if the read operation appropriately returns a list of vehicles.
@@ -146,6 +157,9 @@ public class CarControllerTest {
         willDoNothing().given(carService).delete(getCar().getId());
 
     }
+
+
+
 
     /**
      * Creates an example Car object for use in testing.
