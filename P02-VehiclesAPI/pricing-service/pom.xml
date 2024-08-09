@@ -12,7 +12,7 @@
 	<artifactId>pricing-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pricing-service</name>
-	<description>Pricing Service</description>
+	<description>Pricing Microservice</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -49,6 +49,10 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-gateway</artifactId>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	    <dependencyManagement>
