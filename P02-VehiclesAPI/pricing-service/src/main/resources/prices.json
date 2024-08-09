@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "currency": "USD",
+    "price": 2020,
+    "vehicleId": 1
+  },
+  {
+    "id": 2,
+    "currency": "USD",
+    "price": 2000,
+    "vehicleId": 2
+  },
+  {
+    "id": 3,
+    "currency": "USD",
+    "price": 1320,
+    "vehicleId": 3
+  },
+  {
+    "id": 4,
+    "currency": "USD",
+    "price": 2320,
+    "vehicleId": 4
+  }
+]
